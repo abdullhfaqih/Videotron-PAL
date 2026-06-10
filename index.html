@@ -12,12 +12,7 @@
 </head>
 
 <body>
-  <!-- <div class="current-time glass-effect">
-    <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
-  </div> -->
   <div class="cinematic-light"></div>
-  <!-- <div class="official-pattern"></div> -->
-  <!-- <div class="watermark-bg"></div> -->
   <div class="bokeh-effect"></div>
   <div class="watermark-bg"></div>
   <div class="bokeh-effect"></div>
@@ -46,15 +41,6 @@
         fill="#d4af37" />
     </svg>
   </div>
-
-  <!-- <div class="svg-divider animate-4">
-    <svg width="150" height="20" viewBox="0 0 150 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 10H60M90 10H150" stroke="#d4af37" stroke-width="1.5" />
-      <path
-        d="M75 2C75 6.418 71.418 10 67 10C71.418 10 75 13.582 75 18C75 13.582 78.582 10 83 10C78.582 10 75 6.418 75 2Z"
-        fill="#d4af37" />
-    </svg>
-  </div> -->
 
   <div class="grand-frame">
     <div class="corner-ornament top-left"></div>
@@ -202,17 +188,6 @@
 
     init();
     animate();
-
-    function updateClock() {
-      const now = new Date();
-      document.getElementById('hours').innerText = String(now.getHours()).padStart(2, '0');
-      document.getElementById('minutes').innerText = String(now.getMinutes()).padStart(2, '0');
-      document.getElementById('seconds').innerText = String(now.getSeconds()).padStart(2, '0');
-    }
-
-    // JALANKAN FUNGSI SETIAP 1 DETIK
-    setInterval(updateClock, 1000);
-    updateClock(); // Jalankan sekali saat load
   </script>
 </body>
 
