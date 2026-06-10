@@ -1,387 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Banner Digital Luxury - Pengukuhan Alumni</title>
-  <style>
-    /* Menggunakan font elegan */
-    @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@400;500;600&display=swap");
-
-    :root {
-      --ratio-w: 16;
-      --ratio-h: 9;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body,
-    html {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      font-family: "Cinzel", serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      /* Spotlight lebih redup agar teks lebih menyala */
-      background: radial-gradient(circle at center,
-          #6b0c1e 0%,
-          #4a0512 55%
-          /* #1c0106 100% */
-        );
-
-      /* aspect-ratio: 16 / 9; */
-    }
-
-    /* --- KANVAS BANNER (BARU) --- */
-    .banner-canvas {
-      position: relative;
-      container-type: inline-size;
-      /* Kunci agar bisa pakai ukuran cqw */
-      aspect-ratio: var(--ratio-w) / var(--ratio-h);
-      width: 100%;
-      max-height: 100vh;
-      max-width: calc(100vh * (var(--ratio-w) / var(--ratio-h)));
-
-      /* Settingan dari body kodemu dipindah ke sini */
-      /* background-color: #620a1a; */
-      /* STRICT PALETTE: Maroon */
-      /* font-family: "Cinzel", serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center; */
-      /* Spotlight Maroon & Black transparent */
-      /* background: radial-gradient(circle at center,
-          #620a1a 0%,
-          rgba(0, 0, 0, 0.6) 100%);
-      overflow: hidden; */
-    }
-
-    .banner-container {
-      /* position: relative; */
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      aspect-ratio: 21 / 9;
-      /* background-color: #ffffff; */
-    }
-
-    /* --- PARTIKEL BACKGROUND --- */
-    #particle-canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    /* --- ORNAMEN GARIS LENGKUNG EMAS --- */
-    .gold-waves {
-      position: absolute;
-      width: 35vw;
-      height: auto;
-      z-index: 2;
-      opacity: 0.25;
-      /* Dibuat lebih tipis agar tidak mengganggu bacaan */
-      pointer-events: none;
-    }
-
-    .wave-top-left {
-      top: -5%;
-      left: -5%;
-      transform: rotate(15deg);
-    }
-
-    .wave-bottom-right {
-      bottom: -5%;
-      right: -5%;
-      transform: rotate(195deg);
-    }
-
-    /* --- CONTAINER LOGO --- */
-    .logo-section-atas {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 10;
-      padding: 25px 0;
-      opacity: 0;
-      animation: loopInOut 15s cubic-bezier(0.25, 1, 0.5, 1) infinite 0.5s;
-
-    }
-
-    .logo-section-bawah {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 10;
-      padding: 25px 0;
-      opacity: 0;
-      animation: loopInOut 15s cubic-bezier(0.25, 1, 0.5, 1) infinite 3.5s;
-
-    }
-
-    .logo-box-atas {
-      padding: 5px 5px;
-      height: 60px;
-      width: 180px;
-      border-radius: 15px;
-      background-color: rgba(255, 253, 211, 0.376);
-      backdrop-filter: blur(4px);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.215);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-    }
-
-    .logo-box-bawah {
-      padding: 5px 5px;
-
-      height: 35px;
-      width: 150px;
-      border-radius: 10px;
-      background-color: rgba(255, 253, 211, 0.376);
-      backdrop-filter: blur(4px);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.215);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      align-items: center;
-
-    }
-
-    .logo-box-atas img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      pointer-events: none;
-    }
-
-    .logo-bem {
-      margin-right: 5px;
-    }
-
-    /* --- KONTEN UTAMA --- */
-    .main-content {
-      z-index: 10;
-      text-align: center;
-      width: 90%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .gold-text-small {
-      font-size: 2.8vw;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      color: #C49e57;
-      margin-bottom: 2vh;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-      opacity: 0;
-      animation: loopInOut 15s cubic-bezier(0.25, 1, 0.5, 1) infinite 1s;
-    }
-
-    .gold-text-large {
-      font-size: 4vw;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      line-height: 1.25;
-      background: linear-gradient(to right,
-          #c5a059,
-          #fdf4d6,
-          #d4af37,
-          #fdf4d6,
-          #c5a059);
-      background-size: 200% auto;
-      color: transparent;
-      -webkit-background-clip: text;
-      background-clip: text;
-      margin-bottom: 1.5vh;
-      opacity: 0;
-      animation: loopInOut 15s cubic-bezier(0.25, 1, 0.5, 1) infinite 1.5s, shimmer 7s linear infinite;
-    }
-
-    .cream-text {
-      font-size: 2.5vw;
-      font-weight: 700;
-      letter-spacing: 0.25em;
-      color: #fdf4d6;
-      margin-bottom: 3vh;
-      text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.8);
-      opacity: 0;
-      animation: loopInOut 15s cubic-bezier(0.25, 1, 0.5, 1) infinite 2s;
-    }
-
-    .tagline {
-      font-family: "Montserrat", sans-serif;
-      font-size: 1.5vw;
-      font-weight: 400;
-      /* Ditebalkan sedikit agar mudah dibaca */
-      color: #f3e6d4;
-      line-height: 1.8;
-      letter-spacing: 0.15em;
-      margin-bottom: 5vh;
-      text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.8);
-      opacity: 0;
-      animation: loopInOut 15s cubic-bezier(0.25, 1, 0.5, 1) infinite 2.5s;
-
-    }
-
-    .tagline strong {
-      font-weight: 600;
-      color: #d4af37;
-    }
-
-    /* --- INFO PILLS (LOKASI, TANGGAL, JAM) --- */
-    .info-bar {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      opacity: 0;
-      animation: loopInOut 15s cubic-bezier(0.25, 1, 0.5, 1) infinite 3s;
-    }
-
-    .info-pill {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 25px;
-      border-radius: 50px;
-      border: 1px solid #c39d56;
-      /* Border emas lebih solid */
-      background-color: rgba(30,
-          2,
-          8,
-          0.5);
-      color: #f3e6d4;
-      /* Background lebih pekat agar tulisan kontras */
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
-      font-family: "Montserrat", sans-serif;
-      font-size: 0.95vw;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .info-icon {
-      font-size: 1.1vw;
-      color: #d4af37;
-    }
-
-    /* --- ANIMASI --- */
-    @keyframes floatUp {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeInSlow {
-      0% {
-        opacity: 0;
-      }
-
-      100% {
-        opacity: 1;
-      }
-    }
-
-    @keyframes shimmer {
-      to {
-        background-position: 200% center;
-      }
-    }
-
-    @keyframes loopInOut {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      /* Awal: Sembunyi di bawah */
-      10% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Muncul & diam */
-      75% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Tetap diam biar bisa dibaca */
-      85% {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-
-      /* Hilang melayang ke atas */
-      100% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      /* Kembali ke bawah siap mengulang */
-    }
-
-    /* Dekorasi sudut emas yang lebih tajam */
-    .corner {
-      position: absolute;
-      width: 150px;
-      height: 300px;
-      border: 2.6px solid transparent;
-      z-index: 5;
-    }
-
-
-    .top-right {
-      top: 30px;
-      right: 30px;
-      border-top-color: #d4af37;
-      border-right-color: #d4af37;
-      /* box-shadow: inset -10px 10px 20px -10px rgba(212, 175, 55, 0.3); */
-    }
-
-    .bottom-left {
-      bottom: 30px;
-      left: 30px;
-      border-bottom-color: #d4af37;
-      border-left-color: #d4af37;
-      /* box-shadow: inset 10px -10px 20px -10px rgba(212, 175, 55, 0.3); */
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Videotron BEM Polinema</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="design.css">
 </head>
 
 <body>
-  <div class="banner-container">
-    <!-- <div class="corner top-left"></div> -->
-    <div class="corner top-right"></div>
-    <div class="corner bottom-left"></div>
-    <!-- <div class="corner bottom-right"></div> -->
+  <!-- <div class="current-time glass-effect">
+    <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+  </div> -->
+  <div class="cinematic-light"></div>
+  <!-- <div class="official-pattern"></div> -->
+  <!-- <div class="watermark-bg"></div> -->
+  <div class="bokeh-effect"></div>
+  <div class="watermark-bg"></div>
+  <div class="bokeh-effect"></div>
 
+  <div class="svg-decorations">
+    <svg class="gold-wave wave-left" viewBox="0 0 200 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M-50,0 C150,150 50,350 -50,500" stroke="rgba(212, 175, 55, 0.2)" stroke-width="2" fill="none" />
+      <path d="M-10,0 C200,200 100,400 -10,500" stroke="rgba(212, 175, 55, 0.1)" stroke-width="1" fill="none" />
+    </svg>
+
+    <svg class="gold-wave wave-right" viewBox="0 0 200 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M250,0 C50,150 150,350 250,500" stroke="rgba(212, 175, 55, 0.2)" stroke-width="2" fill="none" />
+      <path d="M210,0 C0,200 100,400 210,500" stroke="rgba(212, 175, 55, 0.1)" stroke-width="1" fill="none" />
+    </svg>
+
+    <svg class="sparkle sp-1" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15 0C15 8.284 8.284 15 0 15C8.284 15 15 21.716 15 30C15 21.716 21.716 15 30 15C21.716 15 15 8.284 15 0Z"
+        fill="#d4af37" />
+    </svg>
+    <svg class="sparkle sp-2" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15 0C15 8.284 8.284 15 0 15C8.284 15 15 21.716 15 30C15 21.716 21.716 15 30 15C21.716 15 15 8.284 15 0Z"
+        fill="#d4af37" />
+    </svg>
+    <svg class="sparkle sp-3" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15 0C15 8.284 8.284 15 0 15C8.284 15 15 21.716 15 30C15 21.716 21.716 15 30 15C21.716 15 15 8.284 15 0Z"
+        fill="#d4af37" />
+    </svg>
+  </div>
+
+  <!-- <div class="svg-divider animate-4">
+    <svg width="150" height="20" viewBox="0 0 150 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 10H60M90 10H150" stroke="#d4af37" stroke-width="1.5" />
+      <path
+        d="M75 2C75 6.418 71.418 10 67 10C71.418 10 75 13.582 75 18C75 13.582 78.582 10 83 10C78.582 10 75 6.418 75 2Z"
+        fill="#d4af37" />
+    </svg>
+  </div> -->
+
+  <div class="grand-frame">
+    <div class="corner-ornament top-left"></div>
+    <div class="corner-ornament top-right"></div>
+    <div class="corner-ornament bottom-left"></div>
+    <div class="corner-ornament bottom-right"></div>
+  </div>
+  <div class="banner-container">
     <svg class="gold-waves wave-top-left" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0,100 C150,200 200,0 400,100 C500,150 450,300 500,400" stroke="url(#goldGrad)" stroke-width="2"
         fill="transparent" />
@@ -407,9 +88,11 @@
         stroke-opacity="0.8" fill="transparent" />
     </svg>
 
+    <div class="official-frame"></div>
+
     <canvas id="particle-canvas"></canvas>
 
-    <div class="logo-section-atas">
+    <div class="logo-section-bawah animate-1">
       <div class="logo-box-atas">
         <img src="./img/logoPolinema.png" alt="Logo" class="logo-polinema" />
         <img src="./img/logoBEM.png" alt="Logo" class="logo-bem" />
@@ -418,37 +101,54 @@
     </div>
 
     <div class="main-content">
-      <div class="gold-text-small">PENGUKUHAN ALUMNI</div>
-      <div class="gold-text-large">BADAN EKSEKUTIF MAHASISWA</div>
-      <div class="cream-text">POLITEKNIK NEGERI MALANG</div>
+      <svg class="title-flank flank-left animate-3" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M50 0C40 20 20 40 0 50C20 60 40 80 50 100C60 80 80 60 100 50C80 40 60 20 50 0ZM50 85C35 70 20 60 15 50C20 40 35 30 50 15C65 30 80 40 85 50C80 60 65 70 50 85Z"
+          fill="#997a15" opacity="0.3" />
+      </svg>
+      <svg class="title-flank flank-right animate-3" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M50 0C40 20 20 40 0 50C20 60 40 80 50 100C60 80 80 60 100 50C80 40 60 20 50 0ZM50 85C35 70 20 60 15 50C20 40 35 30 50 15C65 30 80 40 85 50C80 60 65 70 50 85Z"
+          fill="#997a15" opacity="0.3" />
+      </svg>
+      <div class="gold-text-small ornate-line animate-2">
+        <span>PENGUKUHAN ALUMNI</span>
+      </div>
 
-      <div class="tagline">
-        <strong>MENGUKUHKAN JEJAK, MENYULAM ASA:</strong><br />
+      <div class="gold-text-large animate-3">
+        BADAN EKSEKUTIF MAHASISWA
+      </div>
+
+      <div class="cream-text ornate-line animate-4">
+        <span>POLITEKNIK NEGERI MALANG</span>
+      </div>
+
+      <div class="tagline animate-5">
+        <strong>MENGUKUHKAN JEJAK, MENYULAM ASA:</strong><br>
         LANGKAH AWAL MENJAGA NYALA PENGABDIAN LINTAS GENERASI.
       </div>
 
-      <div class="info-bar">
+      <div class="info-bar animate-6">
         <div class="info-pill">
-          <span class="info-icon">📍</span>
-          <span>Auditorium Teknik Sipil Lantai 8</span>
+          <span class="info-icon">📍</span> AUDITORIUM TEKNIK SIPIL LANTAI 8
         </div>
         <div class="info-pill">
-          <span class="info-icon">📅</span>
-          <span>13 Juni 2026</span>
+          <span class="info-icon">📅</span> 13 JUNI 2026
         </div>
         <div class="info-pill">
-          <span class="info-icon">⏰</span>
-          <span>07:00 - 17:00 WIB</span>
+          <span class="info-icon">⏰</span> 07:00 - 17:00 WIB
         </div>
       </div>
     </div>
 
-    <div class="logo-section-bawah">
+    <div class="logo-section-bawah animate-7">
       <div class="logo-box-bawah">
-        LOGO BAWAH
+        <img src="./img/logo-bawah-baru.png" alt="Logo" class="logo-bawah" />
       </div>
     </div>
+
   </div>
+
   <script>
     const canvas = document.getElementById("particle-canvas");
     const ctx = canvas.getContext("2d");
@@ -502,6 +202,17 @@
 
     init();
     animate();
+
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('hours').innerText = String(now.getHours()).padStart(2, '0');
+      document.getElementById('minutes').innerText = String(now.getMinutes()).padStart(2, '0');
+      document.getElementById('seconds').innerText = String(now.getSeconds()).padStart(2, '0');
+    }
+
+    // JALANKAN FUNGSI SETIAP 1 DETIK
+    setInterval(updateClock, 1000);
+    updateClock(); // Jalankan sekali saat load
   </script>
 </body>
 
