@@ -190,7 +190,7 @@ body {
   padding: 4px 4px;
 
   height: 50px;
-  width: 170px;
+  width: 115px;
   border-radius: 5px;
 }
 .logo-box-atas img {
@@ -222,7 +222,7 @@ body {
 
 /* --- TEKS --- */
 .main-content {
-  margin-top: -35px;
+  margin-top: -10px;
   text-align: center;
   width: 80%;
 }
@@ -313,7 +313,7 @@ body {
   );
   color: var(--gold-light);
   font-family: "Montserrat", sans-serif;
-  font-size: 1vw;
+  font-size: 1.1vw;
   font-weight: 500;
   letter-spacing: 0.1em;
 }
